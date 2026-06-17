@@ -215,4 +215,99 @@ footer {
   min-height: 20px;
   font-weight: 600;
 }
+
+/* ── Catálogo con backend ── */
+#productos-filtrados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.tarjeta.sin-stock {
+  opacity: 0.5;
+}
+
+.btn-detalle {
+  background-color: #333 !important;
+  margin-top: 6px !important;
+}
+
+/* ── Detalle de producto ── */
+#detalle {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.detalle-imagen {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.detalle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+}
+
+.detalle-categoria {
+  background-color: #1200b6;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.detalle-marca {
+  color: #555;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.detalle-stock {
+  color: #333;
+  margin: 0;
+}
+
+#detalle button {
+  padding: 10px 24px;
+  background-color: #d40707;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+#detalle button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.volver {
+  display: inline-block;
+  margin-top: 16px;
+  color: #1200b6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.volver:hover {
+  text-decoration: underline;
+}
+
+#mensaje-error {
+  color: #C0392B;
+  font-weight: 600;
+}
   

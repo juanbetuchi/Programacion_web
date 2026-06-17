@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang='es'>
+
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>TechStore - Agregar producto</title>
+    <link rel='stylesheet' href='estilos.css'>
+  </head>
+
+  <body>
+
+    <header>
+      <h1>TechStore</h1>
+      <nav>
+        <ul>
+          <li><a href='index.html'>Inicio</a></li>
+          <li><a href='productos.html'>Productos</a></li>
+          <li><a href='agregar-producto.html'>Agregar producto</a></li>
+          <li><a href='login.html'>Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class='seccion-form'>
+        <h2 style='margin-top:0'>Agregar producto</h2>
+        <p id='mensaje' class='mensaje-exito'></p>
+
+        <form id='form-producto'>
+
+          <!-- Campos comunes -->
+          <div class='campo'>
+            <label for='nombre'>Nombre</label>
+            <input type='text' id='nombre' required placeholder='Ej: MacBook Air M2'>
+          </div>
+
+          <div class='campo'>
+            <label for='marca'>Marca</label>
+            <input type='text' id='marca' required placeholder='Ej: Apple'>
+          </div>
+
+          <div class='campo'>
+            <label for='categoria'>Categoría</label>
+            <select id='categoria' required>
+              <option value=''>-- Seleccioná una categoría --</option>
+              <option value='notebook'>Notebook</option>
+              <option value='celular'>Celular</option>
+              <option value='auricular'>Auricular</option>
+              <option value='monitor'>Monitor</option>
+              <option value='pc_escritorio'>PC de escritorio</option>
+            </select>
+          </div>
+
+          <div class='campo'>
+            <label for='precio'>Precio ($)</label>
+            <input type='number' id='precio' required min='0' placeholder='Ej: 1200000'>
+          </div>
+
+          <div class='campo'>
+            <label for='stock'>Stock</label>
+            <input type='number' id='stock' required min='0' placeholder='Ej: 5'>
+          </div>
+
+          <div class='campo'>
+            <label for='imagen'>URL de imagen</label>
+            <input type='url' id='imagen' placeholder='https://...'>
+          </div>
+
+          <!-- Campos de Notebook / PC escritorio -->
+          <div id='campos-procesador' class='campos-extra' style='display:none'>
+            <div class='campo'>
+              <label for='procesador'>Procesador</label>
+              <input type='text' id='procesador' placeholder='Ej: Intel Core i7'>
+            </div>
+            <div class='campo'>
+              <label for='ramGB'>RAM (GB)</label>
+              <input type='number' id='ramGB' min='1' placeholder='Ej: 16'>
+            </div>
+            <div class='campo'>
+              <label for='almacenamientoGB'>Almacenamiento (GB)</label>
+              <input type='number' id='almacenamientoGB' min='1' placeholder='Ej: 512'>
+            </div>
+          </div>
+
+          <!-- Pantalla (Notebook y Celular) -->
+          <div id='campo-pantalla' class='campos-extra' style='display:none'>
+            <div class='campo'>
+              <label for='pantallaPulgadas'>Pantalla (pulgadas)</label>
+              <input type='number' id='pantallaPulgadas' min='1' step='0.1' placeholder='Ej: 13.6'>
+            </div>
+          </div>
+
+          <!-- Campos de Notebook extra (almacenamiento ya está arriba) -->
+
+          <!-- Campos de Celular -->
+          <div id='campos-celular' class='campos-extra' style='display:none'>
+            <div class='campo'>
+              <label for='almacenamientoGB-celular'>Almacenamiento (GB)</label>
+              <input type='number' id='almacenamientoGB-celular' min='1' placeholder='Ej: 128'>
+            </div>
+            <div class='campo'>
+              <label for='bateriaMah'>Batería (mAh)</label>
+              <input type='number' id='bateriaMah' min='1' placeholder='Ej: 4000'>
+            </div>
+            <div class='campo'>
+              <label for='camaraMp'>Cámara (MP)</label>
+              <input type='number' id='camaraMp' min='1' placeholder='Ej: 50'>
+            </div>
+          </div>
+
+          <!-- Campos de Auricular -->
+          <div id='campos-auricular' class='campos-extra' style='display:none'>
+            <div class='campo'>
+              <label for='tipo'>Tipo</label>
+              <select id='tipo'>
+                <option value='over-ear'>Over-ear</option>
+                <option value='in-ear'>In-ear</option>
+                <option value='on-ear'>On-ear</option>
+              </select>
+            </div>
+            <div class='campo'>
+              <label>
+                <input type='checkbox' id='wireless'> Inalámbrico
+              </label>
+            </div>
+            <div class='campo'>
+              <label>
+                <input type='checkbox' id='cancelacionRuido'> Cancelación de ruido
+              </label>
+            </div>
+          </div>
+
+          <!-- Campos de Monitor -->
+          <div id='campos-monitor' class='campos-extra' style='display:none'>
+            <div class='campo'>
+              <label for='pulgadas'>Tamaño (pulgadas)</label>
+              <input type='number' id='pulgadas' min='1' step='0.1' placeholder='Ej: 27'>
+            </div>
+            <div class='campo'>
+              <label for='resolucion'>Resolución</label>
+              <select id='resolucion'>
+                <option value='1080p'>1080p</option>
+                <option value='1440p'>1440p</option>
+                <option value='4K'>4K</option>
+              </select>
+            </div>
+            <div class='campo'>
+              <label for='panelTipo'>Tipo de panel</label>
+              <select id='panelTipo'>
+                <option value='IPS'>IPS</option>
+                <option value='VA'>VA</option>
+                <option value='TN'>TN</option>
+                <option value='OLED'>OLED</option>
+              </select>
+            </div>
+            <div class='campo'>
+              <label for='hz'>Frecuencia (Hz)</label>
+              <input type='number' id='hz' min='1' placeholder='Ej: 144'>
+            </div>
+          </div>
+
+          <!-- Campos de PC escritorio (procesador/ram/almacenamiento ya están arriba) -->
+          <div id='campos-pc' class='campos-extra' style='display:none'>
+            <div class='campo'>
+              <label for='placaVideo'>Placa de video</label>
+              <input type='text' id='placaVideo' placeholder='Ej: RTX 4060'>
+            </div>
+            <div class='campo'>
+              <label for='fuenteW'>Fuente (W)</label>
+              <input type='number' id='fuenteW' min='1' placeholder='Ej: 650'>
+            </div>
+          </div>
+
+          <button type='submit'>Agregar producto</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <h6>Juan Manuel Betuchi - Segundo año - 2026</h6>
+    </footer>
+
+    <script src='js/agregar-producto.js'></script>
+
+  </body>
+
+</html>
