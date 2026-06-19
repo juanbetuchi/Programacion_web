@@ -205,6 +205,27 @@ function renderizarDetalle(producto) {
   btn.textContent = producto.estaDisponible ? 'Agregar al carrito' : 'Sin stock';
   btn.disabled    = !producto.estaDisponible;
 
+  const btneliminar = document.createElement('button');
+  btneliminar.textContent = 'Eliminar producto';
+
+  btneliminar.addEventListener('click', async () => {
+    const resultado = await Swal.fire({
+      title:              '¿Eliminar producto?',
+      text:               'Esta acción no se puede deshacer.',
+      icon:               'warning',
+      showCancelButton:   true,
+      confirmButtonColor: '#C0392B',
+      cancelButtonColor:  '#aaa',
+      confirmButtonText:  'Sí, eliminar',
+      cancelButtonText:   'Cancelar',
+    });
+
+    
+    if (!resultado.isConfirmed) return;
+    await fetch(`http://localhost:8080/productos/${id}`, { method: 'DELETE' });
+    window.location.href = 'productos.html';
+  });
+
   info.appendChild(categoria);
   info.appendChild(nombre);
   info.appendChild(marca);
@@ -212,9 +233,11 @@ function renderizarDetalle(producto) {
   info.appendChild(precio);
   info.appendChild(stock);
   info.appendChild(btn);
-
+  info.appendChild(btneliminar);
+  
   contenedor_producto.appendChild(img);
   contenedor_producto.appendChild(info);
+  
 }
 
 // solo ejecuta si estamos en la pagina de detalle
